@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Sinh nhật vui vẻ</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            color: #fff;
+        }
+
+        h1 {
+            margin-top: 50px;
+            font-size: 3em;
+            animation: pop 1s ease;
+        }
+
+        p {
+            font-size: 1.5em;
+            margin-top: 20px;
+            animation: fadeIn 2s ease;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .heart {
+            width: 20px;
+            height: 20px;
+            position: fixed;
+            background: red;
+            transform: rotate(45deg);
+            animation: float 4s linear infinite;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: "";
+            width: 20px;
+            height: 20px;
+            background: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart:before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart:after {
+            left: -10px;
+            top: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sinh nhật vui vẻ</h1>
+    <p>Chúc Mỹ Duyên sinh nhật vui vẻ 🥳</p>
+    <audio autoplay loop>
+        <source src="happy-birthday.mp3" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ âm thanh.
+    </audio>
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = 2 + Math.random() * 3 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
